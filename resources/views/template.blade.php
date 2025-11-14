@@ -15,6 +15,7 @@
     <main class="d-flex flex-column gap-5 mt-5 p-5">
         @yield('content')
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

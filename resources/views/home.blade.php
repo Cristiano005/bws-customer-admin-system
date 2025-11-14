@@ -1,12 +1,13 @@
 @extends('template')
 
 @section('content')
+    <x-customer.add_modal/>
     <section class="container mx-auto">
         <div class="row gap-4">
             <header class="d-flex justify-content-between align-items-center flex-wrap col-12">
                 <h3>Customers</h3>
                 <div class="d-flex align-items-center gap-3">
-                    <button type="button" class="btn btn-outline-success">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#customerModal">
                         Add customer
                         <i class="bi bi-plus-circle"></i>
                     </button>
