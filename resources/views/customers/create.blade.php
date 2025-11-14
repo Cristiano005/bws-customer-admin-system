@@ -10,12 +10,12 @@
                 @csrf
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Nome*</label>
-                    <input type="text" class="form-control" name="name" value="Cris Silva" placeholder="Nome"
+                    <input type="text" class="form-control" name="name" placeholder="Nome"
                         id="name" maxlength="150" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">CPF*</label>
-                    <input type="text" class="form-control" name="cpf" value="11188899915" placeholder="CPF"
+                    <input type="text" class="form-control" name="cpf" placeholder="CPF"
                         id="cpf" maxlength="11" pattern="\d{11}" required>
                 </div>
                 <div class="mb-3">
@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <label for="income" class="form-label">Renda familiar</label>
-                    <input type="number" class="form-control" name="income" value="300" placeholder="Renda Familiar"
+                    <input type="number" class="form-control" name="income" placeholder="Renda Familiar"
                         id="income" min="0" step="0.01" placeholder="0,00">
                 </div>
                 <div>
