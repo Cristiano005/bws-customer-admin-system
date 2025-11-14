@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    /** @use HasFactory<\Database\Factories\CustomerFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'cpf',
+        'birth_date',
+        'income',
+    ];
+
+    const UPDATED_AT = null;
 }

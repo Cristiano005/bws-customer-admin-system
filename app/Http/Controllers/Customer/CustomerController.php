@@ -26,12 +26,18 @@ class CustomerController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:150',
+            'cpf' => 'required|digits:11',
+            'birth_date' => 'required|date',
+            'income' => 'nullable|numeric|min:0',
+        ]);
+
+        if (Customer::create($validated)) {
+            return redirect()->back()->with('success', 'Cliente criado com sucesso!');
+        }
     }
 
     /**
