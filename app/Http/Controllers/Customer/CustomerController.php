@@ -10,23 +10,20 @@ class CustomerController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->query('search')) {
+        if ($request->query('search')) {
             $customers = Customer::where('name', 'ILIKE', "%{$request->input('search')}%")->paginate(5);
         } else {
             $customers = Customer::paginate(5);
         }
 
-        return view('home', [
+        return view('customers', [
             'customers' => $customers,
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     public function store(Request $request)
@@ -43,35 +40,29 @@ class CustomerController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Customer $customer)
     {
-        //
+        return view('customers.edit', [
+            'customer' => $customer,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Customer $customer)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:150',
+            'cpf' => 'required|digits:11',
+            'birth_date' => 'required|date',
+            'income' => 'nullable|numeric|min:0',
+        ]);
+
+        if ($customer->update($validated)) {
+            return redirect()->back()->with('success', 'Cliente criado com sucesso!');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Customer $customer)
     {
-        if($customer->delete()) return redirect()->back()->with('success', 'Cliente deletado com sucesso!');
+        if ($customer->delete()) return redirect()->back()->with('success', 'Cliente deletado com sucesso!');
     }
 }

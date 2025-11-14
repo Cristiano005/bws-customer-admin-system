@@ -1,11 +1,19 @@
-@import 'tailwindcss';
+.my-badge {
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+.badge-green {
+    background-color: #198754;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+.badge-yellow {
+    background-color: #ffc107;
+    color: black;
+}
+
+.badge-red {
+    background-color: #dc3545;
+    
 }
