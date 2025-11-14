@@ -8,13 +8,16 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->query('search')) {
+            $customers = Customer::where('name', 'ILIKE', "%{$request->input('search')}%")->paginate(5);
+        } else {
+            $customers = Customer::paginate(5);
+        }
+
         return view('home', [
-            'customers' => Customer::paginate(5),
+            'customers' => $customers,
         ]);
     }
 
