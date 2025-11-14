@@ -29,7 +29,13 @@
         </div>
         <div class="d-flex col-auto gap-4 ps-5">
             <i class="fs-4 bi bi-pencil text-warning cursor-pointer" title="Edit"></i>
-            <i class="fs-4 bi bi-calendar-x text-danger cursor-pointer" title="Cancel"></i>
+            <form action="/customer/delete/{{ $customer->id }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit">
+                    <i class="fs-4 bi bi-calendar-x text-danger cursor-pointer customer-delete" title="Delete"></i>
+                </button>
+            </form>
         </div>
     </div>
 @endforeach
