@@ -8,19 +8,6 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index(Request $request)
-    {
-        if ($request->query('search')) {
-            $customers = Customer::where('name', 'ILIKE', "%{$request->input('search')}%")->paginate(5);
-        } else {
-            $customers = Customer::paginate(5);
-        }
-
-        return view('customers', [
-            'customers' => $customers,
-        ]);
-    }
-
     public function create()
     {
         return view('customers.create');
@@ -51,14 +38,19 @@ class CustomerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:150',
-            'cpf' => 'required|digits:11',
+            'cpf' => 'required|digits:11|unique:customers,cpf,' . $customer->id,
             'birth_date' => 'required|date',
             'income' => 'nullable|numeric|min:0',
         ]);
 
-        if ($customer->update($validated)) {
-            return redirect()->back()->with('success', 'Cliente criado com sucesso!');
-        }
+        $customer->name = $validated['name'];
+        $customer->cpf = $validated['cpf'];
+        $customer->birth_date = $validated['birth_date'];
+        $customer->income = $validated['income'];
+
+        $customer->save();
+        
+        // return redirect()->back()->with('success', 'Cliente atualizado com sucesso!');
     }
 
     public function destroy(Customer $customer)

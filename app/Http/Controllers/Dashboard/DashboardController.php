@@ -11,13 +11,19 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+        // if ($request->query('search')) {
+        //     $customers = Customer::where('name', 'ILIKE', "%{$request->input('search')}%")->paginate(5);
+        // } else {
+        //     $customers = Customer::paginate(5);
+        // }
+
         $selectedPeriod = $request->input('period') ?? 'month';
         $currentDate = Carbon::now();
 
         if ($selectedPeriod === 'month') {
             $currentMonth = $currentDate->month;
             $customers = Customer::whereMonth('created_at', $currentMonth)->get();
-        } else if($selectedPeriod === 'week') {
+        } else if ($selectedPeriod === 'week') {
             $startOfWeek = (clone $currentDate)->startOfWeek();
             $endOfWeek = (clone $currentDate)->endOfWeek();
             $customers = Customer::whereBetween('created_at', [$startOfWeek, $endOfWeek])->get();
@@ -38,6 +44,7 @@ class DashboardController extends Controller
         return view('home', [
             'highIncomeAdults' => $customersCount,
             'classes' => $class,
+            'customers' => Customer::paginate(4),
         ]);
     }
 }

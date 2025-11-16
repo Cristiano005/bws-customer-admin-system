@@ -19,7 +19,7 @@
             </h6>
         </div>
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-end gap-4">
-            <a href="/customers/{{ $customer->name }}/edit">
+            <a href="/customers/{{ $customer->id }}/edit">
                 <i class="fs-4 bi bi-pencil text-warning cursor-pointer" title="Edit"></i>
             </a>
             <form action="/customer/delete/{{ $customer->id }}" method="POST">

@@ -6,23 +6,6 @@
                 aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
-                <ul class="navbar-nav gap-2">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="/customers">Clientes</a>
-                    </li>
-                    </li>
-                    <li>
-                        <form action="/customers" class="d-flex" role="search" method="GET">
-                            <input class="form-control me-2" type="search" name="search" placeholder="Search"
-                                aria-label="Search" value="{{ request('search') }}" />
-                        </form>
-                    </li>
-                </ul>
-            </div>
         </nav>
     </div>
 </header>

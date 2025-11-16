@@ -17,7 +17,7 @@
                 <div>
                     <label for="exampleFormControlInput1" class="form-label">CPF*</label>
                     <input type="text" class="form-control" name="cpf" value="{{ $customer->cpf }}" placeholder="CPF"
-                        id="cpf" maxlength="11" pattern="\d{11}" required>
+                        id="cpf" maxlength="11" required>
                 </div>
                 <div>
                     <label for="password" class="form-label">Data*</label>
